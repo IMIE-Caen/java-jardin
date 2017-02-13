@@ -5,16 +5,19 @@
  */
 package jardin;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author clement
  */
-public class Patate extends Recoltable{
+public class Brouette {
+    private ArrayList<Recoltable> contenu = new ArrayList();
 
-    @Override
-    public String toString() {
-        return "p-" + super.toString();
+    public void add(Recoltable e) {
+        contenu.add(e);
     }
-   
+    
+    
     
 }

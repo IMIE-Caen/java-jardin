@@ -11,7 +11,13 @@ package jardin;
  */
 public class Main {
     public static void main(String[] args) {
-        Jardin j = new Jardin();
+        Jardin j = Jardin.getInstance();
+        
+        /*
+            Jardin j2 = Jardin.getInstance();
+            System.out.println(j == j2);
+            // Vrai !
+        */
       
         for(int i = 0 ; i < 10 ; i ++){
             j.champ.add(new Patate());
@@ -19,6 +25,14 @@ public class Main {
         for(int i = 0 ; i < 5 ; i ++){
             j.champ.add(new Carotte());
         }
+        
+        Brouette b = new Brouette();
+     // v--------^
+        b.add(j.harvest(0));
+        
+        // j.harvest(0, b);
+        
+        
         System.out.println(j);
         
     }

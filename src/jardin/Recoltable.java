@@ -20,4 +20,11 @@ public abstract class Recoltable {
     public void harvest(){
         harvested = true;                
     }
+    
+    public String toString(){
+        if(isHarvested()){
+            return "r";
+        }
+        return "n";
+    }
 }
