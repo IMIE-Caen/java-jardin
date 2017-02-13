@@ -12,12 +12,39 @@ import java.util.ArrayList;
  * @author clement
  */
 public class Brouette {
+    
+    
     private ArrayList<Recoltable> contenu = new ArrayList();
 
     public void add(Recoltable e) {
         contenu.add(e);
     }
+
+    public Recoltable get(int index) {
+        return contenu.get(index);
+    }
     
+    public boolean containsIngredientDeType(String typeIngredient){
+        
+        for(Recoltable r : contenu){
+            if(r.getClass().getSimpleName().equals(typeIngredient)){
+                return true;
+            }
+        }
+        return false;
+            
+    }
+    
+    
+    public String toString(){
+        String str = "\\__";
+        for(Recoltable r : contenu){
+            str += r + "__";
+           
+        }
+        str += "/\n  o o" ;
+        return str;
+    }
     
     
 }

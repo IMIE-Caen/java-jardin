@@ -28,12 +28,17 @@ public class Main {
         
         Brouette b = new Brouette();
      // v--------^
-        b.add(j.harvest(0));
+        b.add(j.harvest(12));
+        b.add(j.harvest(2));
         
         // j.harvest(0, b);
         
         
-        System.out.println(j);
         
+        
+        System.out.println(j);
+        System.out.println(b);
+        
+        System.out.println(Cuisine.craft(b));
     }
 }
