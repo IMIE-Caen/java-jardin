@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package jardin;
+
+import java.util.ArrayList;
+
+
+
 /**
  *
  * @author clement
@@ -15,7 +20,15 @@ public class Jardin {
      */
     public static void main(String[] args) {
 
+        ArrayList<Patate> tableauDePatates = new ArrayList() ;
+        
     
+        for(int i = 0 ; i < 10 ; i ++){
+            tableauDePatates.add(new Patate());
+        }
+        
+        
+        
         System.out.println("Coucou");
         
         

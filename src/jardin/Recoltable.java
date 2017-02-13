@@ -9,7 +9,15 @@ package jardin;
  *
  * @author clement
  */
-public class Patate extends Recoltable{
-   
+public abstract class Recoltable {
     
+    private boolean harvested = false;
+    
+    public boolean isHarvested() {
+        return harvested;
+    }
+
+    public void harvest(){
+        harvested = true;                
+    }
 }
