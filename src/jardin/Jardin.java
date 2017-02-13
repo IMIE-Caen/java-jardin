@@ -15,25 +15,35 @@ import java.util.ArrayList;
  */
 public class Jardin {
 
-    /**
-     * @param args the command line arguments
-     */
+    private final ArrayList<Recoltable> champ = new ArrayList() ;
+    
     public static void main(String[] args) {
 
-        ArrayList<Patate> tableauDePatates = new ArrayList() ;
+        Jardin j = new Jardin();
         
-    
         for(int i = 0 ; i < 10 ; i ++){
-            tableauDePatates.add(new Patate());
+            j.champ.add(new Patate());
         }
         
+        for(int i = 0 ; i < 5 ; i ++){
+            j.champ.add(new Carotte());
+        }
         
+        System.out.println(j);
         
-        System.out.println("Coucou");
-        
-        
-
     }
 
+    @Override
+    public String toString() {
+        String str = "_";
+        for(Recoltable r : champ){
+            str += r + "_";
+        }
+        return str;
+    }
+    
+    
+    
+    
     
 }

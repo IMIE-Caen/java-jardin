@@ -9,11 +9,11 @@ package jardin;
  *
  * @author clement
  */
-public class Patate extends Recoltable{
-
+public class Carotte extends Recoltable{
+   
     @Override
     public String toString() {
-        return "p";
+        return "c";
     }
    
     
