@@ -15,24 +15,8 @@ import java.util.ArrayList;
  */
 public class Jardin {
 
-    private final ArrayList<Recoltable> champ = new ArrayList() ;
-    
-    public static void main(String[] args) {
-
-        Jardin j = new Jardin();
-        
-        for(int i = 0 ; i < 10 ; i ++){
-            j.champ.add(new Patate());
-        }
-        
-        for(int i = 0 ; i < 5 ; i ++){
-            j.champ.add(new Carotte());
-        }
-        
-        System.out.println(j);
-        
-    }
-
+    public final ArrayList<Recoltable> champ = new ArrayList() ;
+ 
     @Override
     public String toString() {
         String str = "_";
