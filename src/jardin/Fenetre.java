@@ -25,7 +25,8 @@ public class Fenetre extends JFrame{
     
     private  JLabel  label ;
     
-    public Fenetre(){    
+    public Fenetre(){
+        super("Cuisine");
         setSize(300, 300);
         setAlwaysOnTop(true);
         //setResizable(false);
@@ -45,27 +46,38 @@ public class Fenetre extends JFrame{
         Container premierContainerVert = new Container();
         premierContainerVert.setLayout(new GridLayout(2,1));
         premierContainerVert.add(new JLabel("Frigo"));
-        premierContainerVert.add(new JTable(5,2));
+        premierContainerVert.add(new JTable(5,1));
         
         containerPrincipal.add(premierContainerVert);
         
         // 2eme ligne en rouge
-        containerPrincipal.add(new JLabel("Plats à préparer"));
+        Container deuxiemeContainerVert = new Container();
+        deuxiemeContainerVert.setLayout(new GridLayout(2,1));
+        deuxiemeContainerVert.add(new JLabel("Plats à préparer"));
+        deuxiemeContainerVert.add(new JTable(5,2));
+        
+        containerPrincipal.add(deuxiemeContainerVert);
+
         
         // 3eme ligne en rouge
-        containerPrincipal.add(new JLabel("Plats préparés"));
+        Container troisiemeContainerVert = new Container();
+        troisiemeContainerVert.setLayout(new GridLayout(2,1));
+        troisiemeContainerVert.add(new JLabel("Plats préparés"));
+        troisiemeContainerVert.add(new JTable(5,2));
+        
+        containerPrincipal.add(troisiemeContainerVert);
         
         JButton b = new JButton("Voir le champ");
 
         // ATTENTION ! CLASSE ANONYME
         
-//        b.addActionListener(new ActionListener(){
-//            public void actionPerformed(ActionEvent e) {
-//                afficher("Les copains");
-//            }  
-//        });
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                new FenetreChamp();
+            }  
+        });
 
-        containerPrincipal.add(b, BorderLayout.SOUTH);
+        containerPrincipal.add(b);
         
         setVisible(true);
     }

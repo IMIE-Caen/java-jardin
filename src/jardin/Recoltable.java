@@ -23,8 +23,8 @@ public abstract class Recoltable {
     
     public String toString(){
         if(isHarvested()){
-            return "r";
+            return "récolté(e)";
         }
-        return "n";
+        return "pas récolté(e)";
     }
 }
