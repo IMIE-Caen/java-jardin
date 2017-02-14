@@ -10,16 +10,16 @@ package jardin;
  * @author clement
  */
 public class Cuisine {
-    public static String craft( Brouette b ){
+    public static Plat craft( Brouette b ){
         if(b.containsIngredientDeType("Patate") && b.containsIngredientDeType("Carotte")){
-            return "Gratin de Carottes";
+            return new GratinCarotte();
         }
         if(b.containsIngredientDeType("Carotte")){
-            return "Carotte rappées";
+            return new CarottesRapees();
         }
         
         if(b.containsIngredientDeType("Patate") ){
-            return "Frites";
+            return new Frites();
         }
         return null;
     }

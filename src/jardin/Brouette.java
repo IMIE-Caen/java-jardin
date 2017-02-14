@@ -24,7 +24,7 @@ public class Brouette {
         return contenu.get(index);
     }
     
-    public boolean containsIngredientDeType(String typeIngredient){
+    public boolean containsIngredientDeType(String typeIngredient){   
         
         for(Recoltable r : contenu){
             if(r.getClass().getSimpleName().equals(typeIngredient)){
