@@ -13,6 +13,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.CellRendererPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,15 +43,15 @@ public class FenetreChamp extends JFrame{
         Object[][] tmp = new Object[jardin.champ.size()][1];
         
         for(int i = 0 ; i < jardin.champ.size() ; i ++){
-            tmp[i][0] = jardin.champ.get(i);
+            if(jardin.champ.get(i) != null){
+                tmp[i][0] = jardin.champ.get(i);
+            }
         }
         
               
         table = new JTable(tmp, columnNames);
         
         add(table);
-        
-        
         
         
         
