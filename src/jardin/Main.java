@@ -26,17 +26,17 @@ public class Main {
             j.champ.add(new Carotte());
         }
         
-        Brouette b = new Brouette();
+        Frigo f = new Frigo();
      // v--------^
-        b.add(j.harvest(12));
-        b.add(j.harvest(2));
+        f.add(j.harvest(12));
+        f.add(j.harvest(2));
         
-        // j.harvest(0, b);
+        // j.harvest(0, f);
         
         System.out.println(j);
-        System.out.println(b);
+        System.out.println(f);
         
-        Plat p = Cuisine.craft(b);
+        Plat p = Cuisine.craft(f);
         System.out.println(p);
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author clement
  */
-public class Brouette {
+public class Frigo {
     
     
     private ArrayList<Recoltable> contenu = new ArrayList();
