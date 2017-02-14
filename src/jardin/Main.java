@@ -10,7 +10,7 @@ package jardin;
  * @author clement
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         Jardin j = Jardin.getInstance();
         
         /*
@@ -34,9 +34,23 @@ public class Main {
         // j.harvest(0, f);
         
         System.out.println(j);
+        
         System.out.println(f);
         
         Plat p = Cuisine.craft(f);
         System.out.println(p);
+    
+        Fenetre fenetre = new Fenetre();
+        
+        Thread.sleep(1000);
+        
+        fenetre.afficher("Les amis");
+        
+        
+        
+        
+     //   fenetre.afficher(l);
+      //  fenetre.afficher(j.toString());
+
     }
 }
