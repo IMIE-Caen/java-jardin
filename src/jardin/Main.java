@@ -42,9 +42,6 @@ public class Main {
     
         Fenetre fenetre = new Fenetre();
         
-        Thread.sleep(1000);
-        
-        fenetre.afficher("Les amis");
         
         
         

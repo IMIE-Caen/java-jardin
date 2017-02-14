@@ -6,6 +6,8 @@
 package jardin;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +29,19 @@ public class Fenetre extends JFrame{
         label = new JLabel("COUCOU");
         label.setHorizontalAlignment(JLabel.CENTER);
         JButton b = new JButton("+");
+        
+        
+        // ATTENTION ! CLASSE ANONYME
+        
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                afficher("Les copains");
+            }  
+        });
+        
+        
+        
+        
 
         add(label, BorderLayout.CENTER);  
         add(b, BorderLayout.SOUTH);
