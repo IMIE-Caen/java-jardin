@@ -27,7 +27,7 @@ public class FenetreChamp extends JFrame{
     
     
     
-    public FenetreChamp(){   
+    public FenetreChamp(Frigo frigo, Fenetre fenetrePrincipale){   
         super("Champ");
         setSize(300, 300);
         setAlwaysOnTop(true);
@@ -37,8 +37,6 @@ public class FenetreChamp extends JFrame{
         Jardin jardin = Jardin.getInstance();
         JTable table;
         String[] columnNames = {"Légume"};
-        
-        
         
         Object[][] tmp = new Object[jardin.champ.size()][1];
         
@@ -50,8 +48,31 @@ public class FenetreChamp extends JFrame{
         
               
         table = new JTable(tmp, columnNames);
+
+        add(table, BorderLayout.CENTER);
+          
+        JButton b = new JButton("Récolter");
+
+        // ATTENTION ! CLASSE ANONYME
         
-        add(table);
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+             
+                
+                // item récolté :
+                Recoltable r = jardin.harvest(table.getSelectedRow());
+                frigo.add(r);
+                table.repaint();
+                fenetrePrincipale.remplirContainerFrigo();
+
+            }  
+        });
+        
+        
+        
+        add(b, BorderLayout.SOUTH);
+        
+        
         
         
         

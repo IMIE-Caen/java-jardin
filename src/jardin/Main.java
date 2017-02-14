@@ -40,7 +40,7 @@ public class Main {
         Plat p = Cuisine.craft(f);
         System.out.println(p);
     
-        Fenetre fenetre = new Fenetre();
+        Fenetre fenetre = new Fenetre(f);
         
         
         

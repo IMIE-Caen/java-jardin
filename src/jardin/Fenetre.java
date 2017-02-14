@@ -24,9 +24,12 @@ import javax.swing.JTable;
 public class Fenetre extends JFrame{
     
     private  JLabel  label ;
+    Container containerFrigo = new Container();
+    Frigo frigo ;
     
-    public Fenetre(){
+    public Fenetre(Frigo frigo) {
         super("Cuisine");
+        this.frigo = frigo;
         setSize(300, 300);
         setAlwaysOnTop(true);
         //setResizable(false);
@@ -43,37 +46,38 @@ public class Fenetre extends JFrame{
         
         
         // 1ere ligne en rouge
-        Container premierContainerVert = new Container();
-        premierContainerVert.setLayout(new GridLayout(2,1));
-        premierContainerVert.add(new JLabel("Frigo"));
-        premierContainerVert.add(new JTable(5,1));
+        remplirContainerFrigo();
         
-        containerPrincipal.add(premierContainerVert);
+        
+        
+        containerPrincipal.add(containerFrigo);
         
         // 2eme ligne en rouge
-        Container deuxiemeContainerVert = new Container();
-        deuxiemeContainerVert.setLayout(new GridLayout(2,1));
-        deuxiemeContainerVert.add(new JLabel("Plats à préparer"));
-        deuxiemeContainerVert.add(new JTable(5,2));
+        Container deuxiemeContainerRouge = new Container();
+        deuxiemeContainerRouge.setLayout(new GridLayout(2,1));
+        deuxiemeContainerRouge.add(new JLabel("Plats à préparer"));
+        deuxiemeContainerRouge.add(new JTable(5,2));
         
-        containerPrincipal.add(deuxiemeContainerVert);
+        containerPrincipal.add(deuxiemeContainerRouge);
 
         
         // 3eme ligne en rouge
-        Container troisiemeContainerVert = new Container();
-        troisiemeContainerVert.setLayout(new GridLayout(2,1));
-        troisiemeContainerVert.add(new JLabel("Plats préparés"));
-        troisiemeContainerVert.add(new JTable(5,2));
+        Container troisiemeContainerRouge = new Container();
+        troisiemeContainerRouge.setLayout(new GridLayout(2,1));
+        troisiemeContainerRouge.add(new JLabel("Plats préparés"));
+        troisiemeContainerRouge.add(new JTable(5,2));
         
-        containerPrincipal.add(troisiemeContainerVert);
+        containerPrincipal.add(troisiemeContainerRouge);
         
         JButton b = new JButton("Voir le champ");
 
         // ATTENTION ! CLASSE ANONYME
         
+        Fenetre moiMeme = this;
+        
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                new FenetreChamp();
+                new FenetreChamp(frigo, moiMeme);
             }  
         });
 
@@ -85,5 +89,27 @@ public class Fenetre extends JFrame{
 //        label.setText(str);
 //    }
     
-    
+    public void remplirContainerFrigo() {
+        containerFrigo.removeAll();
+        containerFrigo.setLayout(new GridLayout(2,1));
+        containerFrigo.add(new JLabel("Frigo"));
+        
+        // On veut remplir avec le frigo
+        
+        String[] columnNames = {"Légume"};
+        Object[][] tmp = new Object[frigo.contenu.size()][1];
+        
+        for(int i = 0 ; i < frigo.contenu.size() ; i ++){
+            if(frigo.contenu.get(i) != null){
+                tmp[i][0] = frigo.contenu.get(i);
+            }
+        }
+        
+        JTable tableFrigo = new JTable(tmp, columnNames);
+
+        containerFrigo.add(tableFrigo);
+        validate();
+        repaint();
+        
+    }
 }

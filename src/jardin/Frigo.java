@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Frigo {
     
     
-    private ArrayList<Recoltable> contenu = new ArrayList();
+    public ArrayList<Recoltable> contenu = new ArrayList();
 
     public void add(Recoltable e) {
         contenu.add(e);
