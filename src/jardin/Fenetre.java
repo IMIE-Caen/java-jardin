@@ -76,10 +76,12 @@ public class Fenetre extends JFrame{
         
         JButton b = new JButton("Voir le champ");
 
+        FenetreChamp fenetreChamp = new FenetreChamp();
+        
         // Classe anonyme !
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                new FenetreChamp();
+                 fenetreChamp.setVisible(true);
             }  
         });
 

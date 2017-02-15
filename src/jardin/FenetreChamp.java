@@ -56,11 +56,9 @@ public class FenetreChamp extends JFrame{
         
         
         
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         
 
-        
-        setVisible(true);
     }
 
     
