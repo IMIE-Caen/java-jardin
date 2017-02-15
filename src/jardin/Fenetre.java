@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
@@ -24,13 +23,9 @@ import javax.swing.JTable;
  */
 public class Fenetre extends JFrame{
     
-    private  JLabel  label ;
-
-    Frigo frigo ;
-    
-    public Fenetre(Frigo frigo) {
+    public Fenetre() {
         super("Cuisine");
-        this.frigo = frigo;
+        Frigo frigo = Frigo.getInstance();
         setSize(300, 500);
         setAlwaysOnTop(true);
         //setResizable(false);
@@ -51,41 +46,40 @@ public class Fenetre extends JFrame{
         Container containerFrigo = new Container();
         containerFrigo.setLayout(new BorderLayout());
         containerFrigo.add(new JLabel("Frigo"), BorderLayout.NORTH);
-        
         JTable tableFrigo = new JTable(frigo);
         ScrollPane sp = new ScrollPane();
-        sp.add(tableFrigo);
-        
+        sp.add(tableFrigo);        
         containerFrigo.add(sp, BorderLayout.CENTER);
         
         containerPrincipal.add(containerFrigo);
         
         // 2eme ligne en rouge
-        Container deuxiemeContainerRouge = new Container();
-        deuxiemeContainerRouge.setLayout(new GridLayout(2,1));
-        deuxiemeContainerRouge.add(new JLabel("Plats à préparer"));
-        deuxiemeContainerRouge.add(new JTable(5,2));
+        Container containerCuisine = new Container();
+        containerCuisine.setLayout(new BorderLayout());
+        containerCuisine.add(new JLabel("Plats à préparer"), BorderLayout.NORTH);
+        ScrollPane sp2 = new ScrollPane();
+        sp2.add(new JTable(5,2));
+        containerCuisine.add(sp2, BorderLayout.CENTER);
         
-        containerPrincipal.add(deuxiemeContainerRouge);
+        containerPrincipal.add(containerCuisine);
 
         
         // 3eme ligne en rouge
-        Container troisiemeContainerRouge = new Container();
-        troisiemeContainerRouge.setLayout(new GridLayout(2,1));
-        troisiemeContainerRouge.add(new JLabel("Plats préparés"));
-        troisiemeContainerRouge.add(new JTable(5,2));
+        Container containerService = new Container();
+        containerService.setLayout(new BorderLayout());
+        containerService.add(new JLabel("Plats préparés"), BorderLayout.NORTH);
+        ScrollPane sp3 = new ScrollPane();
+        sp3.add(new JTable(5,2));
+        containerService.add(sp3, BorderLayout.CENTER);
         
-        containerPrincipal.add(troisiemeContainerRouge);
+        containerPrincipal.add(containerService);
         
         JButton b = new JButton("Voir le champ");
 
-        // ATTENTION ! CLASSE ANONYME
-        
-        Fenetre moiMeme = this;
-        
+        // Classe anonyme !
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                new FenetreChamp(frigo, moiMeme);
+                new FenetreChamp();
             }  
         });
 
@@ -93,9 +87,6 @@ public class Fenetre extends JFrame{
         
         setVisible(true);
     }
-//    public void afficher(String str){
-//        label.setText(str);
-//    }
     
 
 }

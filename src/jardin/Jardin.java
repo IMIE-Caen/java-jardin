@@ -37,24 +37,7 @@ public class Jardin extends AbstractTableModel{
         fireTableDataChanged();
         return r;
     }
-    /*
-    public void harvest(int index, Brouette b){
-        Recoltable r = champ.remove(index);
-        r.harvest();
-        b.add(r);
-    }
-    */
     
-    
-    @Override
-    public String toString() {
-        String str = "__";
-        for(Recoltable r : champ){
-            str += r + "__";
-        }
-        return str;
-    }
-
     @Override
     public int getRowCount() {
         return champ.size();

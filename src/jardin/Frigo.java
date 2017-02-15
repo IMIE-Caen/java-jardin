@@ -14,9 +14,20 @@ import javax.swing.table.AbstractTableModel;
  */
 public class Frigo extends AbstractTableModel {
     
-    
+    // Design pattern singleton
+    private static Frigo instanceUnique = null;
     public ArrayList<Recoltable> contenu = new ArrayList();
 
+    private Frigo(){
+    }
+    public static Frigo getInstance(){
+        if(instanceUnique == null){
+            instanceUnique = new Frigo();
+        }
+        return instanceUnique;
+    }
+    
+    
     public void add(Recoltable e) {
         contenu.add(e);
         fireTableDataChanged();
@@ -35,17 +46,6 @@ public class Frigo extends AbstractTableModel {
         }
         return false;
             
-    }
-    
-    
-    public String toString(){
-        String str = "\\__";
-        for(Recoltable r : contenu){
-            str += r + "__";
-           
-        }
-        str += "/\n  o o" ;
-        return str;
     }
 
     @Override

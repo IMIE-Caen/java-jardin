@@ -6,17 +6,10 @@
 package jardin;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.CellRendererPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 
 /**
@@ -26,14 +19,13 @@ import javax.swing.JTable;
 public class FenetreChamp extends JFrame{
     
     
-    
-    public FenetreChamp(Frigo frigo, Fenetre fenetrePrincipale){   
+    public FenetreChamp(){   
         super("Champ");
         setSize(300, 300);
         setAlwaysOnTop(true);
         //setResizable(false);
         
-        
+        Frigo frigo = Frigo.getInstance();
         Jardin jardin = Jardin.getInstance();
         JTable table;
        

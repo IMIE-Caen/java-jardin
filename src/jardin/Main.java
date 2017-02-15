@@ -13,11 +13,6 @@ public class Main {
     public static void main(String[] args) throws InterruptedException{
         Jardin j = Jardin.getInstance();
         
-        /*
-            Jardin j2 = Jardin.getInstance();
-            System.out.println(j == j2);
-            // Vrai !
-        */
       
         for(int i = 0 ; i < 10 ; i ++){
             j.champ.add(new Patate());
@@ -26,28 +21,21 @@ public class Main {
             j.champ.add(new Carotte());
         }
         
-        Frigo f = new Frigo();
+        Frigo f = Frigo.getInstance();
      // v--------^
         f.add(j.harvest(12));
         f.add(j.harvest(2));
         
         // j.harvest(0, f);
         
-        System.out.println(j);
         
-        System.out.println(f);
         
         Plat p = Cuisine.craft(f);
         System.out.println(p);
     
-        Fenetre fenetre = new Fenetre(f);
+        Fenetre fenetre = new Fenetre();
         
-        
-        
-        
-        
-     //   fenetre.afficher(l);
-      //  fenetre.afficher(j.toString());
+    
 
     }
 }
