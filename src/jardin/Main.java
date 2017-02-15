@@ -22,9 +22,7 @@ public class Main {
         }
         
         Frigo f = Frigo.getInstance();
-     // v--------^
-        f.add(j.harvest(12));
-        f.add(j.harvest(2));
+
         
         // j.harvest(0, f);
         

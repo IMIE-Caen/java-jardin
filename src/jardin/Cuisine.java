@@ -5,6 +5,7 @@
  */
 package jardin;
 
+import java.util.ArrayList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +18,8 @@ public class Cuisine extends AbstractTableModel implements TableModelListener {
 
         // Design pattern singleton
     private static Cuisine instanceUnique = null;
-        private Cuisine(){
+    private Cuisine(){
+        mettreAJourLaListeDesPlats();
     }
     public static Cuisine getInstance(){
         if(instanceUnique == null){
@@ -27,14 +29,32 @@ public class Cuisine extends AbstractTableModel implements TableModelListener {
     }
     
     
-    public String message= "Coucou";
+    public ArrayList<Plat> listeDePlats = new ArrayList();
     
     
     @Override
     public void tableChanged(TableModelEvent e) {
-        message = "LE FRIGO A CHANGÉ";
+        mettreAJourLaListeDesPlats();
         fireTableDataChanged();
     }
+    
+    public void mettreAJourLaListeDesPlats(){
+        Frigo f = Frigo.getInstance();
+        listeDePlats.clear();
+        if(f.containsIngredientDeType("Patate") && f.containsIngredientDeType("Carotte")){
+            listeDePlats.add(new GratinCarotte());
+        }
+        if(f.containsIngredientDeType("Carotte")){
+            listeDePlats.add(new CarottesRapees());
+        }
+        
+        if(f.containsIngredientDeType("Patate") ){
+            listeDePlats.add(new Frites());
+        }
+    }
+    
+    
+    
     /*public static Plat craft( Frigo f ){
         if(f.containsIngredientDeType("Patate") && f.containsIngredientDeType("Carotte")){
             return new GratinCarotte();
@@ -51,7 +71,7 @@ public class Cuisine extends AbstractTableModel implements TableModelListener {
 
     @Override
     public int getRowCount() {
-        return 1;
+        return listeDePlats.size();
     }
 
     @Override
@@ -61,7 +81,7 @@ public class Cuisine extends AbstractTableModel implements TableModelListener {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return message;
+        return listeDePlats.get(rowIndex).toString();
     }
     
     
