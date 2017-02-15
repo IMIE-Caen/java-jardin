@@ -7,16 +7,16 @@ package jardin;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -25,13 +25,13 @@ import javax.swing.table.AbstractTableModel;
 public class Fenetre extends JFrame{
     
     private  JLabel  label ;
-    Container containerFrigo = new Container();
+
     Frigo frigo ;
     
     public Fenetre(Frigo frigo) {
         super("Cuisine");
         this.frigo = frigo;
-        setSize(300, 300);
+        setSize(300, 500);
         setAlwaysOnTop(true);
         //setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -47,9 +47,16 @@ public class Fenetre extends JFrame{
         
         
         // 1ere ligne en rouge
-        remplirContainerFrigo();
         
+        Container containerFrigo = new Container();
+        containerFrigo.setLayout(new BorderLayout());
+        containerFrigo.add(new JLabel("Frigo"), BorderLayout.NORTH);
         
+        JTable tableFrigo = new JTable(frigo);
+        ScrollPane sp = new ScrollPane();
+        sp.add(tableFrigo);
+        
+        containerFrigo.add(sp, BorderLayout.CENTER);
         
         containerPrincipal.add(containerFrigo);
         
@@ -90,28 +97,5 @@ public class Fenetre extends JFrame{
 //        label.setText(str);
 //    }
     
-    public void remplirContainerFrigo() {
-        containerFrigo.removeAll();
-        containerFrigo.setLayout(new GridLayout(2,1));
-        containerFrigo.add(new JLabel("Frigo"));
-        
-        // On veut remplir avec le frigo
-        
-        String[] columnNames = {"Légume"};
-        Object[][] tmp = new Object[frigo.contenu.size()][1];
-        
-        for(int i = 0 ; i < frigo.contenu.size() ; i ++){
-            if(frigo.contenu.get(i) != null){
-                tmp[i][0] = frigo.contenu.get(i);
-            }
-        }
-        
-        JTable tableFrigo = new JTable(tmp, columnNames);
-        
-        
-        containerFrigo.add(tableFrigo);
-        validate();
-        repaint();
-        
-    }
+
 }

@@ -49,11 +49,9 @@ public class FenetreChamp extends JFrame{
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
              
-                
                 // item récolté :
                 Recoltable r = jardin.harvest(table.getSelectedRow());
                 frigo.add(r);
-                fenetrePrincipale.remplirContainerFrigo();
 
             }  
         });

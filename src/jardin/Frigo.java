@@ -6,18 +6,20 @@
 package jardin;
 
 import java.util.ArrayList;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author clement
  */
-public class Frigo {
+public class Frigo extends AbstractTableModel {
     
     
     public ArrayList<Recoltable> contenu = new ArrayList();
 
     public void add(Recoltable e) {
         contenu.add(e);
+        fireTableDataChanged();
     }
 
     public Recoltable get(int index) {
@@ -44,6 +46,21 @@ public class Frigo {
         }
         str += "/\n  o o" ;
         return str;
+    }
+
+    @Override
+    public int getRowCount() {
+        return contenu.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 1;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return contenu.get(rowIndex);
     }
     
     
