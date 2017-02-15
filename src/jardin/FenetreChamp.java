@@ -36,18 +36,9 @@ public class FenetreChamp extends JFrame{
         
         Jardin jardin = Jardin.getInstance();
         JTable table;
-        String[] columnNames = {"Légume"};
-        
-        Object[][] tmp = new Object[jardin.champ.size()][1];
-        
-        for(int i = 0 ; i < jardin.champ.size() ; i ++){
-            if(jardin.champ.get(i) != null){
-                tmp[i][0] = jardin.champ.get(i);
-            }
-        }
-        
+       
               
-        table = new JTable(tmp, columnNames);
+        table = new JTable(jardin);
 
         add(table, BorderLayout.CENTER);
           
@@ -62,7 +53,6 @@ public class FenetreChamp extends JFrame{
                 // item récolté :
                 Recoltable r = jardin.harvest(table.getSelectedRow());
                 frigo.add(r);
-                table.repaint();
                 fenetrePrincipale.remplirContainerFrigo();
 
             }  

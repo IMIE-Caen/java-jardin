@@ -6,6 +6,7 @@
 package jardin;
 
 import java.util.ArrayList;
+import javax.swing.table.AbstractTableModel;
 
 
 
@@ -13,10 +14,12 @@ import java.util.ArrayList;
  *
  * @author clement
  */
-public class Jardin{
+public class Jardin extends AbstractTableModel{
     
     // Design pattern singleton
     private static Jardin instanceUnique = null;
+    public final ArrayList<Recoltable> champ = new ArrayList() ;
+    
     private Jardin(){
     };
     public static Jardin getInstance(){
@@ -26,12 +29,12 @@ public class Jardin{
         return instanceUnique;
     }
     
-    public final ArrayList<Recoltable> champ = new ArrayList() ;
  
     public Recoltable harvest(int index){
         Recoltable r = champ.get(index);
         champ.set(index, null);
         r.harvest();
+        fireTableDataChanged();
         return r;
     }
     /*
@@ -50,6 +53,36 @@ public class Jardin{
             str += r + "__";
         }
         return str;
+    }
+
+    @Override
+    public int getRowCount() {
+        return champ.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 2;
+    }
+
+    @Override
+    
+                                    // 0       //0
+                                    // 0       //1
+                                    // 1       //0
+                                    // 1       //1
+                                    // 50       //0
+                                    // 50       //1
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        if(champ.get(rowIndex) == null){
+            return "";
+        }
+        if(columnIndex == 0){
+            return champ.get(rowIndex).toString();
+        }
+
+        return champ.get(rowIndex).isHarvested();
+
     }
     
     

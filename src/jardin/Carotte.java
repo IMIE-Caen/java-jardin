@@ -13,7 +13,7 @@ public class Carotte extends Recoltable{
    
     @Override
     public String toString() {
-       return "carotte " + super.toString();
+       return "carotte";
     }
    
     

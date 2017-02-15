@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -106,7 +107,8 @@ public class Fenetre extends JFrame{
         }
         
         JTable tableFrigo = new JTable(tmp, columnNames);
-
+        
+        
         containerFrigo.add(tableFrigo);
         validate();
         repaint();
