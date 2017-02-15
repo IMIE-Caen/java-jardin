@@ -34,8 +34,11 @@ public class FenetreChamp extends JFrame{
 
         add(table, BorderLayout.CENTER);
           
-        JButton b = new JButton("Récolter");
-
+        BoutonEcouteur b = new BoutonEcouteur("Récolter");
+        
+        jardin.addTableModelListener(b);
+        
+        
         // ATTENTION ! CLASSE ANONYME
         
         b.addActionListener(new ActionListener(){

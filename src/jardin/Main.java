@@ -14,7 +14,7 @@ public class Main {
         Jardin j = Jardin.getInstance();
         
       
-        for(int i = 0 ; i < 10 ; i ++){
+        for(int i = 0 ; i < 5 ; i ++){
             j.champ.add(new Patate());
         }
         for(int i = 0 ; i < 5 ; i ++){

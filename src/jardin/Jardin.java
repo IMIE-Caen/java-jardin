@@ -67,7 +67,13 @@ public class Jardin extends AbstractTableModel{
         return champ.get(rowIndex).isHarvested();
 
     }
-    
+    public boolean isEmpty(){
+        for(Recoltable r : champ){
+            if(r != null)
+                return false;
+        }
+        return true;
+    }
     
     
     
