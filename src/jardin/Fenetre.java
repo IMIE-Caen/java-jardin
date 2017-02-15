@@ -58,7 +58,7 @@ public class Fenetre extends JFrame{
         containerCuisine.setLayout(new BorderLayout());
         containerCuisine.add(new JLabel("Plats à préparer"), BorderLayout.NORTH);
         ScrollPane sp2 = new ScrollPane();
-        sp2.add(new JTable(5,2));
+        sp2.add(new JTable(Cuisine.getInstance()));
         containerCuisine.add(sp2, BorderLayout.CENTER);
         
         containerPrincipal.add(containerCuisine);

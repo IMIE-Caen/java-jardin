@@ -18,6 +18,7 @@ public class Frigo extends AbstractTableModel {
     private static Frigo instanceUnique = null;
     public ArrayList<Recoltable> contenu = new ArrayList();
 
+    
     private Frigo(){
     }
     public static Frigo getInstance(){

@@ -28,10 +28,10 @@ public class Main {
         
         // j.harvest(0, f);
         
+        Cuisine c = Cuisine.getInstance();
         
-        
-        Plat p = Cuisine.craft(f);
-        System.out.println(p);
+        f.addTableModelListener(c);
+   
     
         Fenetre fenetre = new Fenetre();
         
